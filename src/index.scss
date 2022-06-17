@@ -1,0 +1,149 @@
+$violet: #7a8aff;
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    color: $violet;
+}
+
+
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    display: flex;
+    justify-content: center;
+
+    li {
+        list-style: none;
+    }
+
+    h1,
+    h3,
+    span,
+    input,
+    button,
+    label {
+        font-family: 'Playball', cursive !important;
+    }
+}
+
+#root {
+    width: 650px;
+    margin: 200px auto 15px;
+    padding: 15px 15px;
+    display: flex;
+    flex-direction: column;
+    min-height: 500px;
+    align-items: center;
+    gap: 10px;
+    background-color: antiquewhite;
+    border-radius: 15px;
+    filter: drop-shadow(0px 0px 1px black);
+
+    .App {
+        text-align: center;
+
+        &-logo {
+            height: 40vmin;
+            pointer-events: none;
+        }
+
+        &-header {
+            background-color: #282c34;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: calc(10px + 2vmin);
+            color: white;
+        }
+
+        &-link {
+            color: #61dafb;
+        }
+    }
+
+    .todo {
+        &__list {
+            max-height: 280px;
+            overflow-y: auto;
+
+            &::-webkit-scrollbar {
+                width: 12px;
+            }
+
+            &::-webkit-scrollbar-thumb {
+                background-color: $violet;
+                border-radius: 20px;
+                border: 3px solid antiquewhite;
+            }
+        }
+        
+        &__empty-list {
+            display: flex;
+            padding: 5px 15px 15px;
+            justify-content: center;
+        }
+
+        &__item {
+            width: 100%;
+            &--completed {
+                filter: blur(1px) opacity(0.4);
+            }
+        }
+    }
+
+    .filter {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: auto;
+
+        &__buttons-group {
+            gap: 1px;
+        }
+
+        &--active {
+            background-color: #867de9db !important;
+        }
+    }
+}
+
+.MuiPaper-root {
+    align-self: stretch;
+}
+
+.MuiFormControl-root {
+    width: calc(100% - 15px);
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type {
+    background-color: floralwhite;
+}
+
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root.Mui-expanded:first-of-type {
+    margin: 0 0;
+}
+
+.css-1ptx2yq-MuiInputBase-root-MuiInput-root:after {
+    border: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
