@@ -1,5 +1,4 @@
 import { Fragment, useContext } from "react";
-import { Divider } from "@mui/material";
 import { ITodo, TFilter, TTodoList } from "../../types/types";
 import TodoItem from "../TodoItem/TodoItem";
 import { AppContext } from "../App/App";
@@ -15,6 +14,8 @@ const TodoList: React.FC = () => {
                 return todoList.filter(todo => !todo.completed)
             case "completed": 
                 return todoList.filter(todo => todo.completed)
+            default:
+                return todoList;
         }
     }
 
@@ -39,7 +40,6 @@ const TodoList: React.FC = () => {
                                 completed={todo.completed} 
                             />
                         </div>
-                        <Divider/>
                     </Fragment>
                 )
             }
@@ -47,7 +47,7 @@ const TodoList: React.FC = () => {
     }
 
     return (
-        <ul className="todo__list">
+        <ul role="todo-ul" className="todo__list">
             {renderList(sortByFilter(filter), filter)}
         </ul>
     )

@@ -1,8 +1,8 @@
 export interface Context {
     todoList: TTodoList,
-    setTodoList: React.Dispatch<React.SetStateAction<TTodoList>>,
+    setTodoList: (todoList: TTodoList) => void,
     filter: TFilter,
-    setFilter: React.Dispatch<React.SetStateAction<TFilter>>
+    setFilter: (filter: TFilter) => void
 }
 export interface ITodo {
     text: Text,

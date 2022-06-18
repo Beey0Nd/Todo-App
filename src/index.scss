@@ -30,11 +30,11 @@ body {
 
 #root {
     width: 650px;
-    margin: 200px auto 15px;
+    margin: 150px auto 15px;
     padding: 15px 15px;
     display: flex;
     flex-direction: column;
-    min-height: 500px;
+    height: 605px;
     align-items: center;
     gap: 10px;
     background-color: antiquewhite;
@@ -67,7 +67,7 @@ body {
 
     .todo {
         &__list {
-            max-height: 280px;
+            max-height: 375px;
             overflow-y: auto;
 
             &::-webkit-scrollbar {
@@ -114,10 +114,11 @@ body {
 
 .MuiPaper-root {
     align-self: stretch;
+    border-radius: 5px !important;
 }
 
 .MuiFormControl-root {
-    width: calc(100% - 15px);
+    width: calc(100% - 25px);
 }
 
 .css-1elwnq4-MuiPaper-root-MuiAccordion-root:first-of-type {
@@ -131,19 +132,6 @@ body {
 .css-1ptx2yq-MuiInputBase-root-MuiInput-root:after {
     border: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
-@keyframes App-logo-spin {
-    from {
-        transform: rotate(0deg);
-    }
-
-    to {
-        transform: rotate(360deg);
-    }
+.css-1x51dt5-MuiInputBase-input-MuiInput-input {
+    padding: 2px 0 16px !important;
 }

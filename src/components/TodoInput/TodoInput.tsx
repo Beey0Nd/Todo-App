@@ -5,7 +5,6 @@ import { ITodo } from "../../types/types";
 import { AppContext } from "../App/App";
 
 
-
 interface Props {
     setExpanded: Function
 }
@@ -36,6 +35,7 @@ const TodoInput: React.FC<Props>= ({setExpanded}) => {
     return (
         <TextField 
             autoComplete="off"
+            InputProps={{ disableUnderline: true }}
             onClick={(e) => e.stopPropagation()}
             onKeyPress={handleKey}
             onChange={handleChange}
