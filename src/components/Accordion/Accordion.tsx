@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Accordion as AccordionMUI, AccordionSummary} from "@mui/material";
+import { Accordion as AccordionMUI, AccordionSummary, Divider } from "@mui/material";
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import TodoInput from "../TodoInput/TodoInput";
 import TodoList from "../TodoList/TodoList";
@@ -17,19 +17,20 @@ const Accordion: React.FC = () => {
 
     return (
         <>
-            <AccordionMUI 
+            <AccordionMUI
                 expanded={expanded === 'panel1'}
                 onChange={handleChange('panel1')}
             >
                 <AccordionSummary
                     expandIcon={<ExpandMoreIcon />}
                 >
-                    <TodoInput setExpanded={setExpanded}/>
+                    <TodoInput setExpanded={setExpanded} />
                 </AccordionSummary>
+                <Divider />
                 <TodoList />
             </AccordionMUI>
         </>
     )
 }
- 
+
 export default Accordion;

@@ -15,35 +15,35 @@ const initialState = {
     id: ""
 }
 
-const TodoInput: React.FC<Props>= ({setExpanded}) => {
-    const {todoList, setTodoList} = useContext(AppContext)
+const TodoInput: React.FC<Props> = ({ setExpanded }) => {
+    const { todoList, setTodoList } = useContext(AppContext)
     const [newTodo, setNewTodo] = useState<ITodo>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setNewTodo({...newTodo, text: e.target.value})
+        setNewTodo({ ...newTodo, text: e.target.value })
     }
 
     const handleKey = (e: React.KeyboardEvent) => {
 
-        if(e.key === "Enter" && newTodo.text !== "") {
-            setTodoList([{...newTodo, id: v4()}, ...todoList])
+        if (e.key === "Enter" && newTodo.text !== "") {
+            setTodoList([{ ...newTodo, id: v4() }, ...todoList])
             setNewTodo(initialState);
             setExpanded("panel1")
         }
     }
 
     return (
-        <TextField 
+        <TextField
             autoComplete="off"
             InputProps={{ disableUnderline: true }}
             onClick={(e) => e.stopPropagation()}
             onKeyPress={handleKey}
             onChange={handleChange}
             value={newTodo.text}
-            label="What needs to be done?" 
+            label="What needs to be done?"
             variant="standard"
-        /> 
+        />
     );
 }
- 
+
 export default TodoInput;
