@@ -1,10 +1,10 @@
-import { Fragment, useContext } from "react";
-import { ITodo, TFilter, TTodoList } from "../../types/types";
+import { Fragment } from "react";
+import { useSelector } from "react-redux";
+import { IState, ITodo, TFilter, TTodoList } from "../../types/types";
 import TodoItem from "../TodoItem/TodoItem";
-import { AppContext } from "../App/App";
 
 const TodoList: React.FC = () => {
-    const { todoList, filter } = useContext(AppContext)
+    const { todoList, filter } = useSelector((state: IState) => state)
 
     const sortByFilter = (filter: TFilter): TTodoList => {
         switch (filter) {

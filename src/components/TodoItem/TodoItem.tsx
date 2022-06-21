@@ -1,30 +1,19 @@
-import { useContext } from "react";
 import { Checkbox, ListItem, ListItemButton, ListItemText } from "@mui/material";
-import { Id, ITodo, Text } from "../../types/types";
-import { AppContext } from "../App/App";
-
+import { useDispatch } from "react-redux";
+import { setCompleted } from "../../actions/actions";
+import { ITodo, Text } from "../../types/types";
 
 
 const TodoItem: React.FC<ITodo> = ({ id, completed, text }) => {
-    const { todoList, setTodoList } = useContext(AppContext)
-
-    const setCompleted = (id: Id) => {
-        const newTodoList = todoList.map(todo => {
-            if (todo.id === id) {
-                return { ...todo, completed: !todo.completed }
-            };
-            return todo;
-        })
-        setTodoList(newTodoList);
-    }
-
+    const dispatch = useDispatch();
+    
     const cutText = (text: Text) => {
         return text.length > 50 ? `${text.substring(0, 50)}...` : text;
     }
 
     return (
         <ListItem divider>
-            <ListItemButton onClick={() => setCompleted(id)}>
+            <ListItemButton onClick={() => dispatch(setCompleted(id))}>
                 <Checkbox checked={completed}
                     sx={{ '& .MuiSvgIcon-root': { fontSize: 24 } }} />
                 <ListItemText className={`${completed ? "todo__item--completed" : ""}`}>

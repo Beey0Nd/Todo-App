@@ -1,16 +1,13 @@
 import { Button } from "@mui/material";
-import { useContext } from "react";
-import { TTodoList } from "../../types/types";
-import { AppContext } from "../App/App";
+import { useDispatch, useSelector } from "react-redux";
+import { removeCompleted } from "../../actions/actions";
+import { IState, TTodoList } from "../../types/types";
 import FilterButtons from "./FilterButtons";
 
 
 const Filter: React.FC = () => {
-    const { todoList, setTodoList } = useContext(AppContext);
-
-    const handleClear = (todoList: TTodoList) => {
-        setTodoList(todoList.filter(todo => !todo.completed))
-    }
+    const dispatch = useDispatch();
+    const {todoList} = useSelector((state: IState) => state)
 
     const countItems = (todoList: TTodoList) => {
         return (`${todoList.length}`).at(-1) === "1" ? `${todoList.length} item left` : `${todoList.length} items left`
@@ -22,7 +19,7 @@ const Filter: React.FC = () => {
                 className="filter__items-left">{countItems(todoList)}</Button>
             <FilterButtons />
             <Button
-                onClick={() => handleClear(todoList)}
+                onClick={() => dispatch(removeCompleted())}
                 variant="outlined">Clear Completed</Button>
         </div>
     );
