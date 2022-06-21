@@ -1,8 +1,9 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
 import { TextField } from "@mui/material";
 import { v4 } from "uuid";
 import { ITodo } from "../../types/types";
-import { AppContext } from "../App/App";
+import { addTodo } from "../../actions/actions";
 
 
 interface Props {
@@ -16,7 +17,7 @@ const initialState = {
 }
 
 const TodoInput: React.FC<Props> = ({ setExpanded }) => {
-    const { todoList, setTodoList } = useContext(AppContext)
+    const dispatch = useDispatch();
     const [newTodo, setNewTodo] = useState<ITodo>(initialState);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +27,7 @@ const TodoInput: React.FC<Props> = ({ setExpanded }) => {
     const handleKey = (e: React.KeyboardEvent) => {
 
         if (e.key === "Enter" && newTodo.text !== "") {
-            setTodoList([{ ...newTodo, id: v4() }, ...todoList])
+            dispatch(addTodo({ ...newTodo, id: v4() }))
             setNewTodo(initialState);
             setExpanded("panel1")
         }

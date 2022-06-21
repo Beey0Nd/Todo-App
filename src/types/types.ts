@@ -1,17 +1,42 @@
-export interface Context {
+// State related
+export interface IState {
     todoList: TTodoList,
-    setTodoList: (todoList: TTodoList) => void,
     filter: TFilter,
-    setFilter: (filter: TFilter) => void
 }
+export type TFilter = "all" | "completed" | "active"
+export type TTodoList = Array<ITodo>
+
 export interface ITodo {
     text: Text,
     completed: Completed,
     id: Id
 }
-
-export type TTodoList = Array<ITodo>
 export type Text = string
 export type Completed = boolean;
 export type Id = string
-export type TFilter = "all" | "completed" | "active"
+
+// Action related
+export interface AddTodoAction {
+    type: "ADD_TODO",
+    payload: ITodo
+}
+
+export interface RemoveCompletedAction {
+    type: "REMOVE_COMPLETED"
+}
+
+export interface SetFilterAction {
+    type: "SET_FILTER",
+    payload: TFilter
+}
+
+export interface SetCompletedAction {
+    type: "SET_COMPLETED",
+    payload: Id
+}
+
+export type ActionTypes = 
+AddTodoAction | 
+SetCompletedAction | 
+RemoveCompletedAction | 
+SetFilterAction
