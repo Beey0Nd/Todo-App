@@ -7,10 +7,16 @@ import FilterButtons from "./FilterButtons";
 
 const Filter: React.FC = () => {
     const dispatch = useDispatch();
-    const {todoList} = useSelector((state: IState) => state)
+    const todoList = useSelector((state: IState) => state.todoList)
 
     const countItems = (todoList: TTodoList) => {
         return (`${todoList.length}`).at(-1) === "1" ? `${todoList.length} item left` : `${todoList.length} items left`
+    }
+
+    const handleClick = () => {
+        if(todoList.find(item => item.completed)) {
+            dispatch(removeCompleted())
+        }
     }
 
     return (
@@ -19,7 +25,7 @@ const Filter: React.FC = () => {
                 className="filter__items-left">{countItems(todoList)}</Button>
             <FilterButtons />
             <Button
-                onClick={() => dispatch(removeCompleted())}
+                onClick={handleClick}
                 variant="outlined">Clear Completed</Button>
         </div>
     );

@@ -1,10 +1,11 @@
 import { Button, ButtonGroup } from "@mui/material";
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setFilter } from "../../actions/actions";
 import { IState } from "../../types/types";
 
 const FilterButtons: React.FC = () => {
-    const {filter} = useSelector((state: IState) => state)
+    const filter = useSelector((state: IState) => state.filter)
     const dispatch = useDispatch();
 
     return (
@@ -28,4 +29,4 @@ const FilterButtons: React.FC = () => {
     );
 }
 
-export default FilterButtons;
+export default memo(FilterButtons);

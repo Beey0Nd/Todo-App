@@ -1,4 +1,5 @@
 import { Checkbox, ListItem, ListItemButton, ListItemText } from "@mui/material";
+import { memo } from "react";
 import { useDispatch } from "react-redux";
 import { setCompleted } from "../../actions/actions";
 import { ITodo, Text } from "../../types/types";
@@ -24,4 +25,4 @@ const TodoItem: React.FC<ITodo> = ({ id, completed, text }) => {
     )
 }
 
-export default TodoItem;
+export default memo(TodoItem);

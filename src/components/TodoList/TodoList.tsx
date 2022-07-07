@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, memo } from "react";
 import { useSelector } from "react-redux";
 import { IState, ITodo, TFilter, TTodoList } from "../../types/types";
 import TodoItem from "../TodoItem/TodoItem";
@@ -53,4 +53,4 @@ const TodoList: React.FC = () => {
     )
 }
 
-export default TodoList;
+export default memo(TodoList);

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { memo, useState } from "react";
 import { useDispatch } from "react-redux";
 import { TextField } from "@mui/material";
 import { v4 } from "uuid";
@@ -47,4 +47,4 @@ const TodoInput: React.FC<Props> = ({ setExpanded }) => {
     );
 }
 
-export default TodoInput;
+export default memo(TodoInput);
