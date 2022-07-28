@@ -17,7 +17,9 @@ const TodoItem: React.FC<ITodo> = ({ id, completed, text }) => {
             <ListItemButton onClick={() => dispatch(setCompleted(id))}>
                 <Checkbox checked={completed}
                     sx={{ '& .MuiSvgIcon-root': { fontSize: 24 } }} />
-                <ListItemText className={`${completed ? "todo__item--completed" : ""}`}>
+                <ListItemText
+                data-testid="todo-item-text"
+                className={`${completed ? "todo__item--completed" : ""}`}>
                     {cutText(text)}
                 </ListItemText>
             </ListItemButton>

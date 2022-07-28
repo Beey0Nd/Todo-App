@@ -7,7 +7,7 @@ import { addTodo } from "../../actions/actions";
 
 
 interface Props {
-    setExpanded: Function
+    setExpanded: (expanded: string) => void
 }
 
 const initialState = {

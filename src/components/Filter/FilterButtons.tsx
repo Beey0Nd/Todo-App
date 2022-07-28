@@ -11,16 +11,19 @@ const FilterButtons: React.FC = () => {
     return (
         <ButtonGroup className="filter__buttons-group" variant="text" aria-label="text button group">
             <Button
+                data-testid="all-btn" 
                 className={`${filter === "all" ? "filter--active" : ""}`}
                 onClick={() => dispatch(setFilter("all"))} variant="contained">
                 All
             </Button>
             <Button
+                data-testid="active-btn"
                 className={`${filter === "active" ? "filter--active" : ""}`}
                 onClick={() => dispatch(setFilter("active"))} variant="contained">
                 Active
             </Button>
             <Button
+                data-testid="completed-btn"
                 className={`${filter === "completed" ? "filter--active" : ""}`}
                 onClick={() => dispatch(setFilter("completed"))} variant="contained">
                 Completed

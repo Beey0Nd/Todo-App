@@ -1,6 +1,6 @@
 import { ActionTypes, IState } from "../types/types";
 
-const initialState: IState = {
+export const initialState: IState = {
     todoList: [],
     filter: "all",
 }

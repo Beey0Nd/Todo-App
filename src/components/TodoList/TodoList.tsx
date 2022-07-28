@@ -1,6 +1,6 @@
 import { Fragment, memo } from "react";
 import { useSelector } from "react-redux";
-import { IState, ITodo, TFilter, TTodoList } from "../../types/types";
+import { IState, TFilter, TTodoList } from "../../types/types";
 import TodoItem from "../TodoItem/TodoItem";
 
 const TodoList: React.FC = () => {
@@ -22,18 +22,18 @@ const TodoList: React.FC = () => {
     const renderList = (todoList: TTodoList, filter: TFilter) => {
         if (todoList.length === 0) {
             return filter === "all" ?
-                <h3 className="todo__empty-list">
+                <h3 data-testid="empty-list" className="todo__empty-list">
                     Your Todo List is empty
                 </h3> :
-                <h3 className="todo__empty-list">
+                <h3 data-testid="empty-list" className="todo__empty-list">
                     No {filter} todo's
                 </h3>
         }
         return todoList.map(
-            (todo: ITodo) => {
+            (todo) => {
                 return (
                     <Fragment key={todo.id}>
-                        <div className="todo__item">
+                        <div role="todo-item" className="todo__item">
                             <TodoItem
                                 id={todo.id}
                                 text={todo.text}
@@ -47,7 +47,7 @@ const TodoList: React.FC = () => {
     }
 
     return (
-        <ul role="todo-ul" className="todo__list">
+        <ul data-testid="todo-ul" role="todo-ul" className="todo__list">
             {renderList(sortByFilter(filter), filter)}
         </ul>
     )

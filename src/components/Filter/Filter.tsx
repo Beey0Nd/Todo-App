@@ -10,7 +10,8 @@ const Filter: React.FC = () => {
     const todoList = useSelector((state: IState) => state.todoList)
 
     const countItems = (todoList: TTodoList) => {
-        return (`${todoList.length}`).at(-1) === "1" ? `${todoList.length} item left` : `${todoList.length} items left`
+        return `${todoList.length} item${todoList.length
+            .toString().at(-1) === "1" ? "" : "s" } left`
     }
 
     const handleClick = () => {
